@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import ContactForm from './ContactForm/ContactForm';
-import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter';
+import ContactForm from 'components/ContactForm/ContactForm';
+import ContactList from 'components/ContactList/ContactList';
+import Filter from 'components/Filter/Filter';
 import * as storage from 'services/localStorage';
 import image from 'images/image.jpg';
 import s from './App.module.css';
+import Container from 'components/common/Container/Container';
 
 const STORAGE_KEY = 'contacts';
 
@@ -42,7 +43,7 @@ const App = () => {
     setContacts(prevContacts => prevContacts.filter(elem => elem.id !== id));
   };
   return (
-    <div className={s.container}>
+    <Container>
       <img className={s.image} src={image} alt="Woman" />
       <div className={s.contantWrap}>
         <h1 className={s.title}>Phonebook</h1>
@@ -53,7 +54,7 @@ const App = () => {
         <Filter value={filter} onChange={onChangeInput} />
         <ContactList contacts={onFilterChange()} onDelete={deleteContact} />
       </div>
-    </div>
+    </Container>
   );
 };
 export default App;
